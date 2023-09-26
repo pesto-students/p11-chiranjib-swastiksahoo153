@@ -4,15 +4,20 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import Paper from "@mui/material/Paper";
+import weekDays from "../constants/weekDays";
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 
-const WorkoutDayPlan = ({ day, exercises }) => {
+const WorkoutDayPlan = () => {
+  const day = parseInt(useParams().day);
+  const curPlan = useSelector((state) => state.workoutPlan.plan.days[day]);
   return (
     <div style={{ textAlign: "center" }}>
       <Typography variant="h5" gutterBottom>
-        {day}
+        {weekDays[day]}
       </Typography>
       <List>
-        {exercises.map((exercise, index) => (
+        {curPlan.exercises.map((exercise, index) => (
           <Paper
             key={index}
             elevation={3}
@@ -31,7 +36,7 @@ const WorkoutDayPlan = ({ day, exercises }) => {
                 secondary={
                   <div style={{ marginLeft: "20px" }}>
                     <Typography variant="body2" color="textSecondary">
-                      Repetitions: {exercise.repetitions}
+                      Repetitions: {exercise.reps}
                     </Typography>
                     <Typography variant="body2" color="textSecondary">
                       Sets: {exercise.sets}

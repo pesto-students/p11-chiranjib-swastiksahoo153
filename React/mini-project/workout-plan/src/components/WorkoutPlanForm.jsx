@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   Button,
   TextField,
@@ -11,10 +11,14 @@ import {
   Select,
   Box,
 } from "@mui/material";
-import { setWorkoutPlan } from "../redux/workoutPlanSlice";
+import { setWorkoutInfo } from "../redux/workoutInfoSlice";
+import { useNavigate } from "react-router-dom";
+import { fetchWorkoutPlan } from "../redux/workoutPlanSlice";
 
 function WorkoutPlanForm() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const userInfo = useSelector((state) => state.userInfo);
   const [formData, setFormData] = useState({
     goal: "",
     frequency: "",
@@ -57,7 +61,16 @@ function WorkoutPlanForm() {
       setShowAlert(true);
     } else {
       setShowAlert(false);
-      dispatch(setWorkoutPlan(formData));
+      dispatch(setWorkoutInfo(formData));
+      const workoutPlanParams = {
+        goal: formData.goal,
+        frequency: formData.frequency,
+        duration: formData.duration,
+        age: userInfo.age,
+        gender: userInfo.gender,
+      };
+      dispatch(fetchWorkoutPlan(workoutPlanParams));
+      navigate("/schedule");
     }
   };
 

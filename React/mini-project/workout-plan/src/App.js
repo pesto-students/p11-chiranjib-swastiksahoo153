@@ -16,19 +16,8 @@ function App() {
           <Routes>
             <Route path="/" element={<UserInfoForm />} />
             <Route path="/workout" element={<WorkoutPlanForm />} />
-            <Route
-              path="/schedule"
-              element={<DayList days={["Monday", "Tuesday"]} />}
-            />
-            <Route
-              path="/workout-plan"
-              element={
-                <WorkoutDayPlan
-                  day="Monday"
-                  exercises={[{ name: "Pull-ups", repetitions: 10, sets: 3 }]}
-                />
-              }
-            />
+            <Route path="/schedule" element={<DayList />} />
+            <Route path="/day/:day" element={<WorkoutDayPlan />} />
           </Routes>
         </Router>
       </div>
