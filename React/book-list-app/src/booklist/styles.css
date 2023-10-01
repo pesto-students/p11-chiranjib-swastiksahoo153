@@ -1,0 +1,72 @@
+/* Style for the header */
+.header {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Style for the book list container */
+.book-list-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Style for each book card */
+.book-card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for the "Add a New Book" form */
+.book-form {
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for buttons */
+.button {
+  background-color: #007bff;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+/* Style for input fields */
+.input-field {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+:root {
+  /* Light theme variables */
+  --background-color: #f9f9f9;
+
+  /* Dark theme variables */
+  --dark-background-color: #333;
+}
+
+/* Common styles */
+body {
+  background-color: var(--background-color);
+}
+
+/* Dark theme styles */
+body.dark {
+  background-color: var(--dark-background-color);
+}
